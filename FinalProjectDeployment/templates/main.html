@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project Model Deployment</title>
+</head>
+<body>
+
+    <div class="form">
+        <h1>Hacktiv8 Prediksi Biaya Asuransi</h1>
+        <h4>Random Forest Model by Dwiki Saputra</h4>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <table>
+                <tr>
+                    <td>Indeks Massa Tubuh</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="bmi" placeholder="Ex : 20.44" required="required" autocomplete="off" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Memiliki Anak</td>
+                    <td>:</td>
+                    <td>
+                         <select name="have_children">
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jumlah Anak</td>
+                    <td>:</td>
+                    <td><select name="children">
+                          <option value="0">Tidak Memiliki</option>
+                          <option value="1">1 Anak</option>
+                          <option value="2">2 Anak</option>
+                          <option value="3">3 Anak</option>
+                          <option value="4">4 Anak</option>
+                          <option value="5">5 Anak</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kelompok Umur</td>
+                    <td>:</td>
+                    <td>
+                        <select name="age_range">
+                          <option value="1">< 30 Tahun</option>
+                          <option value="2">31 - 44 Tahun</option>
+                          <option value="3">> 45 Tahun</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status Merokok</td>
+                    <td>:</td>
+                    <td>
+                        <select name="smoker">
+                          <option value="1">Merokok</option>
+                          <option value="0">Tidak Merokok</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Wilayah Rumah</td>
+                    <td>:</td>
+                    <td>
+                        <select name="region">
+                          <option value="3">Southwest</option>
+                          <option value="2">Southeast</option>
+                          <option value="1">Northwest</option>
+                          <option value="0">Northeast</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary btn-block btn-large">Prediksi</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <br>
+        <br>
+        <p style="font-family: consolas; color: red;"><strong>Noted : </strong></p>
+        <p style="font-family: consolas; color: red;">Cara Hitung Indeks Masa Tubuh : Berat Badan (kg) / Kuadrat(Tinggi Badan dalam Meter)</p>
+
+        <br>
+        <br>
+        <p style="font-family: consolas;"><strong>{{ prediction_text_title }}</strong></p>
+        <p class="message" style="font-family: consolas;">&emsp; &emsp; Prediksi Biaya Asuransi yang harus dibayarkan sebesar <strong style="color: red;">{{ prediction_text }}</strong></p>
+    </div>
+
+</body>
+</html>
